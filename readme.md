@@ -29,6 +29,9 @@ Pushover only supports 3 levels of priorities whilst GfW supports 5.
 
 Long story short, only Very Low, Normal, and Emergency priorities affect Pushover!
 
+### Coming Soon!
+- Ability to choose different Pushover sounds(Next Update)
+
 ### Compiling
 Before compiling this plugin make sure you add your Pushover Application API Key to `WebhookDestination.cs:19` or it won't work!
 
