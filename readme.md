@@ -4,6 +4,7 @@ You can now send your Growl from Windows Notifications to Pushover!
 ### Install
 - Automatic: Copy and Paste this into your web browser: `growl:forwarder*https://raw.github.com/Vorror/GrowlForWindowsPushover/master/Pushover.xml`
 - Manual
+	- Download [gfwpushover.zip](https://github.com/Vorror/GrowlForWindowsPushover/blob/master/gfwpushover.zip?raw=true)
 	- Unzip the gfwpushover.zip and place it inside `%USERPROFILE%\Local Settings\Application Data\Growl\2.0.0.0\Forwarders`
 
 ### Usage
