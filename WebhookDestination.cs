@@ -136,15 +136,15 @@ namespace Pushover_plugin
             switch (priority)
             {
                 case 0:
-                    return -1;
+                    return -2;
                 case 1:
-                    return 0;
+                    return -1;
                 case 2:
                     return 0;
                 case 3:
-                    return 0;
-                case 4:
                     return 1;
+                case 4:
+                    return 2;
             }
             return 0;
         }
@@ -161,7 +161,7 @@ namespace Pushover_plugin
         /// <param name="callbackFunction">The function GfW will run if this notification is responded to on the forwarded computer</param>
         public override void ForwardNotification(Growl.Connector.Notification notification, Growl.Connector.CallbackContext callbackContext, Growl.Connector.RequestInfo requestInfo, bool isIdle, ForwardDestination.ForwardedNotificationCallbackHandler callbackFunction)
         {
-          if ((isIdle == false && sendIfIdle == true) || !( ConvertNotificationStyle(notification) >= converttolocal(this.selectedpriority)))
+            if ((isIdle == false && sendIfIdle == true) || !((int)notification.Priority >= converttolocal(this.selectedpriority)))
           {
                return;
           }
