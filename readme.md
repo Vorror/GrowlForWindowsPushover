@@ -27,7 +27,7 @@ Pushover only supports 3 levels of priorities whilst GfW supports 5.
 - High is considered Normal Prority(0) on Pushover
 - Emergency is considered High Prority(1) on Pushover
 
-Long story short, only use Very Low, Normal, and Emergency priorities when forwarding!
+Long story short, only Very Low, Normal, and Emergency priorities affect Pushover!
 
 ### Compiling
 Before compiling this plugin make sure you add your Pushover Application API Key to `WebhookDestination.cs:19` or it won't work!
