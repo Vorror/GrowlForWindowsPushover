@@ -1,4 +1,4 @@
-## Pushover Plugin for GrowlForWindows!
+## ![Image](https://raw.github.com/Vorror/GrowlForWindowsPushover/master/Resources/growlforwindows.png) Pushover Plugin for GrowlForWindows!
 You can now send your Growl for Windows Notifications to Pushover! 
 
 ### Install
