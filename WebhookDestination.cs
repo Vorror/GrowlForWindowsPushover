@@ -247,6 +247,10 @@ namespace Pushover_plugin
                 qsb.Add("sound", sounds[selectedSound]);
                 qsb.Add("message",notification.Text);
                 qsb.Add("priority", ConvertNotificationStyle(notification));
+                if (selectedSound != 0)
+                {
+                    qsb.Add("sound", sounds[selectedSound]);
+                }
                 if (device.Length > 0)
                 {
                     qsb.Add("device", device);
