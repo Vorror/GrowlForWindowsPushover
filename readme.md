@@ -9,11 +9,11 @@ You can now send your Growl for Windows Notifications to Pushover!
 
 ### Usage
 - Go to the *Network* tab in GfW
-- Hit the plus sign and scroll down to "Pushover plugin for GfW"
+- Hit the plus sign and scroll down to *Forward to your Pushover account*
 - Retrieve your API key from [Pushover](https://pushover.net)
 - Place that API key into the API Key field
 - Add a description and hit save!
-- Hit the checkbox "Foward notifications to other computers"
+- Hit the checkbox *Foward notifications to other computers*
 
 ### Features
 - Only forward notifications when idle
