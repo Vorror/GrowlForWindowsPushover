@@ -17,9 +17,11 @@ namespace Pushover_plugin
         /// </summary>
         private string DEST = "https://api.pushover.net/1/messages.json";
         private string APP_API_KEY = "YOUR APP API KEY";
+        private string device;
         private string api;
         private bool sendIfIdle;
         private int selectedpriority;
+        private int selectedSound;
         private string[] modes = new string[] {
             "Very Low",
             "Moderate",
@@ -29,18 +31,39 @@ namespace Pushover_plugin
         private string[] when = new string[] {
             "Always",
             "When Idle"};
+        private string[] sounds = new string[] {
+            "",
+            "pushover",
+            "bike",
+            "bugle",
+            "cashregister",
+            "classical",
+            "cosmic",
+            "falling",
+            "gamelan",
+            "incoming",
+            "intermission",
+            "magic",
+            "mechanical",
+            "pianobar",
+            "siren",
+            "spacealarm",
+            "tugboat",
+            "none"};
 
         /// <summary>
         /// Initializes a new instance of the <see cref="WebhookDestination"/> class.
         /// </summary>
         /// <param name="url">The URL of the webhook</param>
-        public WebhookDestination(string name, string api, bool sendIfIdle, int selectedpriority)
+        public WebhookDestination(string name, string api, bool sendIfIdle, int selectedpriority, int selectedSound, string device)
             : base(name, true)
         {
             this.api = api;
             this.sendIfIdle = sendIfIdle;
             this.selectedpriority = selectedpriority;
             this.sendIfIdle = sendIfIdle;
+            this.selectedSound = selectedSound;
+            this.device = device;
         }
 
         /// <summary>
@@ -50,7 +73,34 @@ namespace Pushover_plugin
         public override string AddressDisplay
         {
             get {
-                return "(" + modes[this.selectedpriority] + "/" + when[Convert.ToInt32(this.sendIfIdle)] + ") - " + this.api;
+                return "(" + modes[this.selectedpriority] + "/" + when[Convert.ToInt32(this.sendIfIdle)] + ReturnSoundName(this.selectedSound) + ReturnDeviceName(this.device) + ") - " + this.api;
+            }
+        }
+        public string ReturnDeviceName(string device)
+        {
+
+            if (this.device.Length == 0)
+            {
+
+                return this.device;
+            }
+            else
+            {
+                string f_device = "/" + this.device;
+                return f_device;
+            }
+        }
+        public string ReturnSoundName(int selectedSound)
+        {
+
+            if (this.selectedSound==0)
+            {
+                return sounds[this.selectedSound];
+            }
+            else
+            {
+                string f_sound = "/" + sounds[this.selectedSound];
+                return f_sound;
             }
         }
 
@@ -89,6 +139,28 @@ namespace Pushover_plugin
             set
             {
                 this.selectedpriority = value;
+            }
+        }
+        public int Sound
+        {
+            get
+            {
+                return this.selectedSound;
+            }
+            set
+            {
+                this.selectedSound = value;
+            }
+        }
+        public string Device
+        {
+            get
+            {
+                return this.device;
+            }
+            set
+            {
+                this.device = value;
             }
         }
 
@@ -131,6 +203,7 @@ namespace Pushover_plugin
         }
         /// <summary>
         /// Converts Selected Priority to mode styled priorty
+        /// </summary>
         public int converttolocal(int priority)
         {
             switch (priority)
@@ -171,8 +244,13 @@ namespace Pushover_plugin
                 qsb.Add("token", APP_API_KEY);
                 qsb.Add("user", api);
                 qsb.Add("title", notification.Title);
+                qsb.Add("sound", sounds[selectedSound]);
                 qsb.Add("message",notification.Text);
                 qsb.Add("priority", ConvertNotificationStyle(notification));
+                if (device.Length > 0)
+                {
+                    qsb.Add("device", device);
+                }
                 string data = qsb.ToPostData();
                 Growl.CoreLibrary.WebClientEx wc = new Growl.CoreLibrary.WebClientEx();
                 using (wc)
@@ -184,7 +262,6 @@ namespace Pushover_plugin
             }
             catch (Exception ex)
             {
-                // this is an example of writing to the main GfW debug log:
                 Growl.CoreLibrary.DebugInfo.WriteLine(String.Format("Pushover forwarding failed: {0}", ex.Message));
             }
         }
@@ -207,7 +284,7 @@ namespace Pushover_plugin
         /// <returns><see cref="WebhookDestination"/></returns>
         public override DestinationBase Clone()
         {
-            return new WebhookDestination(this.Description,this.api, this.sendIfIdle, this.selectedpriority);
+            return new WebhookDestination(this.Description,this.api, this.sendIfIdle, this.selectedpriority, this.selectedSound, this.device);
         }
 
         /// <summary>

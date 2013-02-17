@@ -39,7 +39,7 @@ namespace Pushover_plugin
         /// <returns><see cref="List[DestinationListItem]"/></returns>
         public List<DestinationListItem> GetListItems()
         {
-            ForwardDestinationListItem item = new ForwardDestinationListItem("Pushover plugin for GrowlForWindows", GetIcon(), this);
+            ForwardDestinationListItem item = new ForwardDestinationListItem("Forward to your Pushover account", GetIcon(), this);
             List<DestinationListItem> list = new List<DestinationListItem>();
             list.Add(item);
             return list;
