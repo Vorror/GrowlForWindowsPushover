@@ -1,5 +1,5 @@
 ## Pushover Plugin for GrowlForWindows!
-You can now send your Growl from Windows Notifications to Pushover! 
+You can now send your Growl for Windows Notifications to Pushover! 
 
 ### Install
 - Automatic: Copy and Paste this into your web browser: `growl:forwarder*https://raw.github.com/Vorror/GrowlForWindowsPushover/master/Pushover.xml`
@@ -18,6 +18,8 @@ You can now send your Growl from Windows Notifications to Pushover!
 ### Features
 - Only forward notifications when idle
 - Set a minimum notification priority before forwarding
+- Enter destination device
+- Select Pushover sounds
 
 ### Priorities
 Pushover only supports 3 levels of priorities whilst GfW supports 5.
@@ -28,9 +30,6 @@ Pushover only supports 3 levels of priorities whilst GfW supports 5.
 - Emergency is considered High Prority(1) on Pushover
 
 Long story short, only Very Low, Normal, and Emergency priorities affect Pushover!
-
-### Coming Soon!
-- Ability to choose different Pushover sounds(Next Update)
 
 ### Compiling
 Before compiling this plugin make sure you add your Pushover Application API Key to `WebhookDestination.cs:19` or it won't work!
