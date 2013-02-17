@@ -7,7 +7,7 @@
   <author>Paul Miller</author>
 
   <!-- <version> can be any value (not just numbers or version strings) that identifies the version of the plugin -->
-  <version>1.1.0</version>
+  <version>1.1.1</version>
 
   <!-- <packageurl> should be the full url to the location of the .zip file that contains all of your plugin's required files -->
   <packageurl>https://github.com/Vorror/GrowlForWindowsPushover/blob/master/gfwpushover.zip?raw=true</packageurl>
