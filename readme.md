@@ -32,6 +32,7 @@ Pushover only supports 3 levels of priorities whilst GfW supports 5.
 TL;DR only Very Low, Normal, and Emergency priorities affect Pushover.
 
 ### Compiling
+*If you're only installing the plugin, see the install section above, otherwise this step is unnecessary*
 Before compiling this plugin make sure you add your Pushover Application API Key to `WebhookDestination.cs:19` or it won't work!
 
 ### License
