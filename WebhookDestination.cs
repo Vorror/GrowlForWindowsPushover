@@ -16,7 +16,7 @@ namespace Pushover_plugin
         /// The url of the webhook
         /// </summary>
         private string DEST = "https://api.pushover.net/1/messages.json";
-        private string APP_API_KEY = "YOUR APP API KEY";
+        private string applicationToken;
         private string device;
         private string api;
         private bool sendIfIdle;
@@ -55,7 +55,7 @@ namespace Pushover_plugin
         /// Initializes a new instance of the <see cref="WebhookDestination"/> class.
         /// </summary>
         /// <param name="url">The URL of the webhook</param>
-        public WebhookDestination(string name, string api, bool sendIfIdle, int selectedpriority, int selectedSound, string device)
+        public WebhookDestination(string name, string api, bool sendIfIdle, int selectedpriority, int selectedSound, string device, string application)
             : base(name, true)
         {
             this.api = api;
@@ -64,6 +64,7 @@ namespace Pushover_plugin
             this.sendIfIdle = sendIfIdle;
             this.selectedSound = selectedSound;
             this.device = device;
+            this.applicationToken = application;
         }
 
         /// <summary>
@@ -101,6 +102,18 @@ namespace Pushover_plugin
             {
                 string f_sound = "/" + sounds[this.selectedSound];
                 return f_sound;
+            }
+        }
+
+        public string ApplicationToken
+        {
+            get
+            {
+                return this.applicationToken;
+            }
+            set
+            {
+                this.applicationToken = value;
             }
         }
 
@@ -241,7 +254,7 @@ namespace Pushover_plugin
             try
             {
                 QuerystringBuilder qsb = new QuerystringBuilder();
-                qsb.Add("token", APP_API_KEY);
+                qsb.Add("token", applicationToken);
                 qsb.Add("user", api);
                 qsb.Add("title", notification.Title);
                 qsb.Add("sound", sounds[selectedSound]);
@@ -288,7 +301,7 @@ namespace Pushover_plugin
         /// <returns><see cref="WebhookDestination"/></returns>
         public override DestinationBase Clone()
         {
-            return new WebhookDestination(this.Description,this.api, this.sendIfIdle, this.selectedpriority, this.selectedSound, this.device);
+            return new WebhookDestination(this.Description,this.api, this.sendIfIdle, this.selectedpriority, this.selectedSound, this.device, this.applicationToken);
         }
 
         /// <summary>

@@ -18,6 +18,8 @@ namespace Pushover_plugin
         private System.Windows.Forms.ComboBox comboBox2;
         private Growl.Destinations.HighlightTextBox textBox1;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private HighlightTextBox textBoxApplicationToken;
         private Growl.Destinations.HighlightTextBox textBoxUrl;
 
         public WebhookInputs()
@@ -39,11 +41,15 @@ namespace Pushover_plugin
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox1 = new Growl.Destinations.HighlightTextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBoxApplicationToken = new Growl.Destinations.HighlightTextBox();
             this.panelDetails.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelDetails
             // 
+            this.panelDetails.Controls.Add(this.label5);
+            this.panelDetails.Controls.Add(this.textBoxApplicationToken);
             this.panelDetails.Controls.Add(this.textBox1);
             this.panelDetails.Controls.Add(this.label4);
             this.panelDetails.Controls.Add(this.label3);
@@ -56,6 +62,7 @@ namespace Pushover_plugin
             this.panelDetails.Controls.Add(this.textBoxName);
             this.panelDetails.Controls.Add(this.labelUrl);
             this.panelDetails.Controls.Add(this.textBoxUrl);
+            this.panelDetails.Size = new System.Drawing.Size(338, 204);
             // 
             // textBoxUrl
             // 
@@ -102,16 +109,15 @@ namespace Pushover_plugin
             "Normal",
             "High",
             "Emergency"});
-            this.comboBox1.Location = new System.Drawing.Point(209, 72);
+            this.comboBox1.Location = new System.Drawing.Point(209, 98);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(106, 21);
             this.comboBox1.TabIndex = 6;
-            this.comboBox1.SelectedIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 75);
+            this.label1.Location = new System.Drawing.Point(19, 101);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(190, 13);
             this.label1.TabIndex = 7;
@@ -120,7 +126,7 @@ namespace Pushover_plugin
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(22, 147);
+            this.checkBox1.Location = new System.Drawing.Point(22, 173);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(173, 17);
             this.checkBox1.TabIndex = 9;
@@ -158,16 +164,15 @@ namespace Pushover_plugin
             "Spacealarm",
             "Tugboat",
             "None (silent)"});
-            this.comboBox2.Location = new System.Drawing.Point(209, 99);
+            this.comboBox2.Location = new System.Drawing.Point(209, 125);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(106, 21);
             this.comboBox2.TabIndex = 11;
-            this.comboBox2.SelectedIndex = 0;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(19, 102);
+            this.label3.Location = new System.Drawing.Point(19, 128);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(184, 13);
             this.label3.TabIndex = 12;
@@ -176,7 +181,7 @@ namespace Pushover_plugin
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(20, 126);
+            this.label4.Location = new System.Drawing.Point(20, 152);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(118, 13);
             this.label4.TabIndex = 13;
@@ -185,16 +190,36 @@ namespace Pushover_plugin
             // textBox1
             // 
             this.textBox1.HighlightColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(250)))), ((int)(((byte)(184)))));
-            this.textBox1.Location = new System.Drawing.Point(209, 126);
+            this.textBox1.Location = new System.Drawing.Point(209, 152);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(106, 20);
             this.textBox1.TabIndex = 14;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(20, 75);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(66, 13);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "App. Token:";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // highlightTextBoxAToken
+            // 
+            this.textBoxApplicationToken.HighlightColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(250)))), ((int)(((byte)(184)))));
+            this.textBoxApplicationToken.Location = new System.Drawing.Point(89, 72);
+            this.textBoxApplicationToken.Name = "highlightTextBoxAToken";
+            this.textBoxApplicationToken.Size = new System.Drawing.Size(227, 20);
+            this.textBoxApplicationToken.TabIndex = 16;
+            this.textBoxApplicationToken.TextChanged += new System.EventHandler(this.textBoxApplicationToken_TextChanged);
+            // 
             // WebhookInputs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.Name = "WebhookInputs";
+            this.Size = new System.Drawing.Size(338, 293);
             this.panelDetails.ResumeLayout(false);
             this.panelDetails.PerformLayout();
             this.ResumeLayout(false);
@@ -216,6 +241,8 @@ namespace Pushover_plugin
             this.textBoxUrl.Enabled = true;
             this.textBox1.Text = String.Empty;
             this.textBox1.Enabled = true;
+            this.textBoxApplicationToken.Text = String.Empty;
+            this.textBoxApplicationToken.Enabled = true;
 
             WebhookDestination whd = db as WebhookDestination;
             if (whd != null)
@@ -226,6 +253,7 @@ namespace Pushover_plugin
                 this.comboBox2.SelectedIndex = whd.Sound;
                 this.checkBox1.Checked = whd.Idle;
                 this.textBox1.Text = whd.Device;
+                this.textBoxApplicationToken.Text = whd.ApplicationToken;
             }
 
             ValidateInputs();
@@ -242,7 +270,7 @@ namespace Pushover_plugin
         /// </remarks>
         public override DestinationBase Create()
         {
-            return new WebhookDestination(this.textBoxName.Text, this.textBoxUrl.Text, this.checkBox1.Checked, this.comboBox1.SelectedIndex, this.comboBox2.SelectedIndex, this.textBox1.Text);
+            return new WebhookDestination(this.textBoxName.Text, this.textBoxUrl.Text, this.checkBox1.Checked, this.comboBox1.SelectedIndex, this.comboBox2.SelectedIndex, this.textBox1.Text, this.textBoxApplicationToken.Text);
         }
 
         /// <summary>
@@ -261,12 +289,24 @@ namespace Pushover_plugin
             whd.Selected = this.comboBox1.SelectedIndex;
             whd.Sound = this.comboBox2.SelectedIndex;
             whd.Device = this.textBox1.Text;
+            whd.ApplicationToken = this.textBoxApplicationToken.Text;
         }
 
 
         private void ValidateInputs()
         {
             bool valid = true;
+
+            // Token
+            if (String.IsNullOrEmpty(this.textBoxApplicationToken.Text))
+            {
+                this.textBoxApplicationToken.Highlight();
+                valid = false;
+            }
+            else
+            {
+                this.textBoxApplicationToken.Unhighlight();
+            }
 
             // Description
             if (String.IsNullOrEmpty(this.textBoxName.Text))
@@ -314,6 +354,16 @@ namespace Pushover_plugin
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             ValidateInputs();
+        }
+
+        private void textBoxApplicationToken_TextChanged(object sender, EventArgs e)
+        {
+            ValidateInputs();
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
